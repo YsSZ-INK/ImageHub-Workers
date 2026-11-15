@@ -73,10 +73,14 @@ npm run dev                         # http://localhost:8787
 **3) 立刻建表**
 
 1. 在该 D1 数据库页切换到 **Console** 标签
-2. 另开一页打开
-   `https://raw.githubusercontent.com/YsSZ-INK/ImageHub-Workers/main/migrations/0001_init.sql`
-3. 全选复制那段 SQL，粘贴到 Console，点 **Execute**
+2. **先点一下 SQL 输入框**（确认光标在里面），再另开一页打开
+   `https://raw.githubusercontent.com/YsSZ-INK/ImageHub-Workers/main/docs/d1-console-init.sql`
+   （这是去掉注释的纯语句版，避免控制台把注释当成「没有 SQL」）
+3. 全选复制，粘贴到 Console，点 **Execute**
 4. 切到 **Tables** 标签，确认出现 `users` 与 `images` 两张表
+
+若控制台提示 `No SQL statements detected.`，说明内容没进输入框：改成一条一条执行
+（先 `CREATE TABLE users`，再索引，再 `CREATE TABLE images`，最后两个索引）。
 
 **4) 把仓库连到 Workers（自动构建）**
 
@@ -149,6 +153,7 @@ npm run deploy
 | --- | --- |
 | `Authentication error` | 未登录或 token 失效，重跑 `npx wrangler login` |
 | `D1_ERROR: no such table: users` | 没执行建表 SQL，或 `database_id` 没改 |
+| 控制台报 `No SQL statements detected.` | 内容没进输入框：先点进 SQL 框再粘贴；或改用 `docs/d1-console-init.sql` 逐条执行 |
 | 页面能开但注册/登录 500 | `AUTH_SECRET` 未设置 |
 | 上传报 `DB is not defined` / `BUCKET is not defined` | 绑定变量名不是 `DB` / `BUCKET` |
 | `R2 bucket not found` | `wrangler.toml` 的 `bucket_name` 与实际桶名不一致 |
