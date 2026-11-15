@@ -128,7 +128,7 @@ Worker → **Settings → Bindings**：
 **8) 生效并注册站长**
 
 1. 回到 **Deployments**，对最新一次部署点 **⋯ → Retry deployment**
-2. 打开 Worker 地址（形如 `https://imagehub-lite.xxx.workers.dev`）
+2. 打开 Worker 地址（形如 `https://imagehub-workers.xxx.workers.dev`）
 3. 展开「没有账号？注册一个」，**第一个账号自动成为管理员**
 4. 之后 `ALLOW_REGISTER=false` 会拒掉其他注册，所以请尽快完成
 

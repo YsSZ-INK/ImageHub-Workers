@@ -1,6 +1,6 @@
 # ImageHub Lite（Cloudflare Workers 简化版）
 # 部署前：wrangler login → npm run db:create → 把返回的 database_id 填到下面 → npm run deploy
-name = "imagehub-lite"
+name = "imagehub-workers"
 main = "src/index.ts"
 compatibility_date = "2025-01-01"
 
