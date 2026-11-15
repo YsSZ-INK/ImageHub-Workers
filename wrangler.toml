@@ -19,8 +19,7 @@ PUBLIC_R2_BASE = ""
 [[d1_databases]]
 binding = "DB"
 database_name = "imagehub"
-# 替换为 npm run db:create 返回的真实 ID
-database_id = "00000000-0000-0000-0000-000000000000"
+database_id = "0765752b-6cbb-4780-b374-b6e6a5a7ffb9"
 migrations_dir = "migrations"
 
 [[r2_buckets]]
