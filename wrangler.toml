@@ -1,0 +1,28 @@
+# ImageHub Lite（Cloudflare Workers 简化版）
+# 部署前：wrangler login → npm run db:create → 把返回的 database_id 填到下面 → npm run deploy
+name = "imagehub-lite"
+main = "src/index.ts"
+compatibility_date = "2025-01-01"
+
+# 静态变量；AUTH_SECRET 不要写在这里，用 secret 管理：
+#   本地：.dev.vars（参考 .dev.vars.example）
+#   线上：npx wrangler secret put AUTH_SECRET
+[vars]
+SITE_NAME = "ImageHub Lite"
+MAX_UPLOAD_MB = "20"
+# 是否开放注册：默认关闭（私有图床）。第一个账号始终可注册并成为管理员
+ALLOW_REGISTER = "false"
+# 可选：R2 绑定自定义域后填公开访问前缀（如 https://img.example.com），
+# 匿名访问公开图时会 302 到该域名，图片字节不再经过 Worker
+PUBLIC_R2_BASE = ""
+
+[[d1_databases]]
+binding = "DB"
+database_name = "imagehub"
+# 替换为 npm run db:create 返回的真实 ID
+database_id = "00000000-0000-0000-0000-000000000000"
+migrations_dir = "migrations"
+
+[[r2_buckets]]
+binding = "BUCKET"
+bucket_name = "imagehub"

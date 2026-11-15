@@ -1,0 +1,26 @@
+{
+  "name": "imagehub-workers",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "license": "GPL-3.0-only",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit",
+    "db:migrate": "wrangler d1 migrations apply imagehub --remote",
+    "db:migrate:local": "wrangler d1 migrations apply imagehub --local",
+    "db:create": "wrangler d1 create imagehub",
+    "r2:create": "wrangler r2 bucket create imagehub",
+    "dry-run": "wrangler deploy --dry-run --outdir=.wrangler/dry-run"
+  },
+  "dependencies": {
+    "hono": "^4.6.14",
+    "jose": "^5.9.6"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261113.1",
+    "typescript": "^5.7.2",
+    "wrangler": "^4.0.0"
+  }
+}
